@@ -1,11 +1,11 @@
 import Data.Char (isDigit)
 import System.IO (readFile)
 
-calculateSum :: String -> Int
-calculateSum input = sum (map readCalibrationValue (lines input))
+solve :: String -> Int
+solve input = sum (map calibrationValue (lines input))
   where
-    readCalibrationValue :: String -> Int
-    readCalibrationValue line =
+    calibrationValue :: String -> Int
+    calibrationValue line =
       let digits = filter isDigit line
        in if null digits
             then 0
@@ -13,5 +13,5 @@ calculateSum input = sum (map readCalibrationValue (lines input))
 
 main :: IO ()
 main = do
-  input <- readFile "input/sample.txt"
-  print $ calculateSum input
+  input <- readFile "input/input.txt"
+  print $ solve input
