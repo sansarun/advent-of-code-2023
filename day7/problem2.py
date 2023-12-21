@@ -30,8 +30,6 @@ pattern_powers = {
 def find_power(cards):
     original_cards = cards.copy()
 
-    print(cards)
-
     # handle joker
     c = Counter([c for c in cards if c != "J"])
     if len(list(c.elements())) > 0:
@@ -42,9 +40,6 @@ def find_power(cards):
         cards = [most_common if c == "J" else c for c in cards]
     else:
         cards = ["A" if c == "J" else c for c in cards]
-
-    print(cards)
-    print("===============")
 
     count = {}
     for card in cards:
@@ -81,9 +76,6 @@ with open("input/input.txt", "r") as f:
                 "power": int(hand["power"]),
             }
         )
-
-    # for r in ranked_hands:
-    #     print(r)
 
     ans = sum([r["rank"] * r["bid"] for r in ranked_hands])
     print(ans)
